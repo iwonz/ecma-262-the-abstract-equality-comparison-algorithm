@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>The Abstract Equality Comparison Algorithm Visualizer</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form id="form">
+        <input id="x" type="text" placeholder="x" value="' '" />
+        <span>
+          <b>==</b>
+        </span>
+        <input id="y" type="text" placeholder="y" value="false" />
+        <button>Run</button>
+      </form>
+
+      <ol id="sections">
+        <li>
+          If Type(x) is the same as Type(y), then
+          <ol type="a">
+            <li>If Type(x) is Undefined, return true.</li>
+            <li>If Type(x) is Null, return true.</li>
+            <li>
+              If Type(x) is Number, then
+              <ol type="i">
+                <li>If x is NaN, return false.</li>
+                <li>If y is NaN, return false.</li>
+                <li>If x is the same Number value as y, return true.</li>
+                <li>If x is +0 and y is −0, return true.</li>
+                <li>If x is −0 and y is +0, return true.</li>
+                <li>Return false.</li>
+              </ol>
+            </li>
+            <li>
+              If Type(x) is String, then return true if x and y are exactly the same sequence of
+              characters (same length and same characters in corresponding positions). Otherwise,
+              return false.
+            </li>
+            <li>
+              If Type(x) is Boolean, return true if x and y are both true or both false. Otherwise,
+              return false.
+            </li>
+            <li>Return true if x and y refer to the same object. Otherwise, return false.</li>
+          </ol>
+        </li>
+        <li>If x is null and y is undefined, return true.</li>
+        <li>If x is undefined and y is null, return true.</li>
+        <li>
+          If Type(x) is Number and Type(y) is String, return the result of the comparison x ==
+          ToNumber(y).
+        </li>
+        <li>
+          If Type(x) is String and Type(y) is Number, return the result of the comparison
+          ToNumber(x) == y.
+        </li>
+        <li>If Type(x) is Boolean, return the result of the comparison ToNumber(x) == y.</li>
+        <li>If Type(y) is Boolean, return the result of the comparison x == ToNumber(y).</li>
+        <li>
+          If Type(x) is either String or Number and Type(y) is Object, return the result of the
+          comparison x == ToPrimitive(y).
+        </li>
+        <li>
+          If Type(x) is Object and Type(y) is either String or Number, return the result of the
+          comparison ToPrimitive(x) == y.
+        </li>
+        <li>Return false.</li>
+      </ol>
+    </div>
+  </body>
+</html>
